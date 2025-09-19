@@ -1,0 +1,13 @@
+# .dockerignore
+# git repo
+.git/
+# IntelliJ IDEA Build
+.idea/
+# Gradle Build
+build/
+# Maven Build
+target/
+# Maven, Gradle config
+*.iml
+# compiled class file
+*.class
