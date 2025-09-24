@@ -7,8 +7,8 @@ pipeline {
     environment {
         ENV = "prod" // "dev" || "prod"
 
-        GIT_REPO_URL = 'https://github.com/HaeahnDev/Project-Vanilla.git'
-        GIT_PROJECT_NAME = 'vanilla_springboot' // Docker Build 소문자 사용 ( ERROR: invalid tag "<이미지>:<태그>": repository name must be lowercase
+        GIT_REPO_URL = 'https://github.com/HaeahnDev/Common-SpringBoot.git'
+        GIT_PROJECT_NAME = 'common_springboot' // Docker Build 소문자 사용 ( ERROR: invalid tag "<이미지>:<태그>": repository name must be lowercase
         GIT_BRANCH = 'main'
         CREDENTIALS_ID = 'github_token'
 

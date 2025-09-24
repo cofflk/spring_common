@@ -1,9 +1,8 @@
-package com.haeahn.common.global.interceptor;
+package com.haeahn.common.global.interceptor.service;
 
 import com.haeahn.common.global.annotation.LogAccess;
 import com.haeahn.common.global.interceptor.context.AuthContext;
 import com.haeahn.common.global.interceptor.dto.CustomHeaderDto;
-import com.haeahn.common.global.interceptor.service.CustomHeaderService;
 import com.haeahn.common.global.interceptor.context.CustomHeaderContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -23,6 +22,14 @@ public class AuthInterceptor implements HandlerInterceptor {
     @Override
     @LogAccess(value="인증 인터셉터")
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+//        String host = request.getServerName(); // 요청 호스트
+//        int port = request.getServerPort();    // 요청 포트
+//
+//        // localhost 체크
+//        if ("localhost".equals(host) || "127.0.0.1".equals(host)) {
+//            // 인증 API 호출 안함
+//            return true;
+//        }
 
         // 세션 여부 확인
         HttpSession session = request.getSession();

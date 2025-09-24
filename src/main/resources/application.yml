@@ -26,8 +26,6 @@ server:
 
 app:
   jwt:
-    expiration:
-      access: 10
     whitelistUrls:
       - /error
       - /test/**

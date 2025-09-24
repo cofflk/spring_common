@@ -1,0 +1,47 @@
+extend type Query {
+#  erpHrCodes: [ErpHrCode!]!
+  erpHrCode(cdPrefix: String!, cdUpcode: String, cdCode: String, dsCode: String): ErpHrCode
+
+#  erpCommCodes: [ErpCommCode!]!
+  erpCommCode(cdSystem: String!, cdType: String!, cdCode: String, dsCode: String): ErpCommCode
+}
+
+type ErpHrCode {
+  cdPrefix: String
+  cdCode: String
+  cdUpcode: String
+  dsCode: String
+  amAllow: Float
+  amAllow2: Float
+  amAllow3: Float
+  rmBigo: String
+  ynDelete: String
+  ynSys: String
+  snPrint: String
+  dsEtc1: String
+  dsEtc2: String
+  dsEtc3: String
+  dsEtc4: String
+  dsEtc5: String
+  idInsert: String
+  dtInsert: String
+  idUpdate: String
+  dtUpdate: String
+}
+
+type ErpCommCode {
+  cdSystem: String
+  cdType: String
+  cdCode: String
+  dsCode: String
+  dsShort: String
+  dsEtc1: String
+  dsEtc2: String
+  dsEtc3: String
+  dsEtc4: String
+  dsEtc5: String
+  rmBigo: String
+  dsOrder: Int
+  ynUse: String
+}
+

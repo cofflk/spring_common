@@ -1,0 +1,17 @@
+# ! : Not null
+type Query {
+    userList: [User!]!
+}
+
+type User {
+    empNo: ID!
+    userId: String
+    userName: String
+    deptCode: String
+    deptName: String
+    titleCode: String
+    titleName: String
+    dutyCode: String
+    dutyName: String
+    email: String
+}

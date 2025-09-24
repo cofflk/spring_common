@@ -27,7 +27,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-aop")
-//	implementation("org.springframework.boot:spring-boot-starter-graphql")
+	implementation("org.springframework.boot:spring-boot-starter-graphql")
 //	implementation("org.springframework.boot:spring-boot-starter-validation")
 // Web Client
 	implementation("org.springframework.boot:spring-boot-starter-webflux")

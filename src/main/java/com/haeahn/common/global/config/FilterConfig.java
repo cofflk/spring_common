@@ -1,5 +1,6 @@
 package com.haeahn.common.global.config;
 
+import com.haeahn.common.global.filter.AuthTokenFilter;
 import com.haeahn.common.global.filter.CustomHeaderFilter;
 import com.haeahn.common.global.filter.MdcFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -30,14 +31,14 @@ public class FilterConfig {
         return registration;
     }
 
-//    @Bean
-//    public FilterRegistrationBean<AuthTokenFilter> authTokenFilterRegistration(AuthTokenFilter authTokenFilter) {
-//        FilterRegistrationBean<AuthTokenFilter> registration = new FilterRegistrationBean<>();
-//        registration.setFilter(authTokenFilter);
-//        registration.addUrlPatterns("/*");
-//        registration.setName("authTokenFilter");
-//        registration.setOrder(Ordered.HIGHEST_PRECEDENCE + 30); // MdcFilter 다음에 실행
-//        return registration;
-//    }
+    @Bean
+    public FilterRegistrationBean<AuthTokenFilter> authTokenFilterRegistration(AuthTokenFilter authTokenFilter) {
+        FilterRegistrationBean<AuthTokenFilter> registration = new FilterRegistrationBean<>();
+        registration.setFilter(authTokenFilter);
+        registration.addUrlPatterns("/*");
+        registration.setName("authTokenFilter");
+        registration.setOrder(Ordered.HIGHEST_PRECEDENCE + 30); // MdcFilter 다음에 실행
+        return registration;
+    }
 
 }

@@ -1,10 +1,10 @@
-package com.haeahn.project_vanilla;
+package com.haeahn.common;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SvrWorkApplicationTests {
+class CommonApplicationTests {
 
 	@Test
 	void contextLoads() {

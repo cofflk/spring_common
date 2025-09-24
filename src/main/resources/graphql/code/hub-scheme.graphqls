@@ -1,0 +1,7 @@
+type Query {
+#  erpHrCodes: [ErpHrCode!]!
+  erpHrCode(cdPrefix: String!, cdUpcode: String, cdCode: String, dsCode: String): ErpHrCode
+
+#  erpCommCodes: [ErpCommCode!]!
+  erpCommCode(cdSystem: String!, cdType: String!, cdCode: String, dsCode: String): ErpCommCode
+}

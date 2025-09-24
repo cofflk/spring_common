@@ -1,4 +1,4 @@
-### vanilla project
+### common project
 
 > - spring boot : 3.4.4
 > - last update : 2025-08-08

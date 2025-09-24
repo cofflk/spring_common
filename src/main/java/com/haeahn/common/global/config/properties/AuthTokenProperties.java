@@ -13,7 +13,7 @@ import java.util.Map;
 @Configuration
 @ConfigurationProperties(prefix = "app.jwt")
 public class AuthTokenProperties {
-    private Map<String, String> expiration;
+//    private Map<String, String> expiration;
     private List<String> whitelistUrls;
     private List<String> adminOnlyUrls;
 }
