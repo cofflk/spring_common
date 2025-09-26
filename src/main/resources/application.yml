@@ -13,6 +13,32 @@ spring:
 #  banner:
 #    location: # 배너 텍스트 리소스 위치.
 
+  graphql:
+    enabled: true
+#    schema:
+#      resources/graphql/**/*.graphqls 를 자동으로 읽음
+#      locations: classpath:graphql/**/*.graphqls
+    endpoint:
+      path: /graphql
+    graphiql:
+      enabled: true
+      path: /graphiql
+      cdn:
+        enabled: false
+
+
+
+#  graphql:
+#    # GraphQL 자동 설정 비활성화 (커스텀 설정 사용)
+#    enabled: false
+##    path: .graphql
+#graphql:
+#  # 도메인별 엔드포인트
+#  endpoints:
+#    code: "/graphql/code"
+#    org: "/graphql/org"
+
+
 springdoc:
   swagger-ui:
     #    default path = /swagger-ui.html
@@ -33,3 +59,6 @@ app:
       - /admin/**
       - /swagger/**
       - /swagger-ui/**
+
+
+

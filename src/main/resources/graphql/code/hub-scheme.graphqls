@@ -1,7 +1,10 @@
-type Query {
-#  erpHrCodes: [ErpHrCode!]!
-  erpHrCode(cdPrefix: String!, cdUpcode: String, cdCode: String, dsCode: String): ErpHrCode
+extend type Query {
+    queryCodeHubComm(modlCode: String!, declCode: String, implCode: String): [CodeHubComm!]!
+}
 
-#  erpCommCodes: [ErpCommCode!]!
-  erpCommCode(cdSystem: String!, cdType: String!, cdCode: String, dsCode: String): ErpCommCode
+type CodeHubComm {
+  modlCode: String
+  declCode: String
+  implCode: String
+  implName: String
 }

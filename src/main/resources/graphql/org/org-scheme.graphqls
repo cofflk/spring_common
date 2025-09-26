@@ -1,0 +1,25 @@
+interface User {
+    empNo: String
+    userId: String
+    userName: String
+    deptCode: String
+    deptName: String
+    companyCode: String
+    companyName: String
+    titleCode: String
+    titleName: String
+    dutyCode: String
+    dutyName: String
+    jobCode: String
+    jobName: String
+    email: String
+    extension: String
+    mobile: String
+}
+
+interface Dept {
+    DeptCode: String
+    DeptName: String
+    companyCode: String
+    companyName: String
+}

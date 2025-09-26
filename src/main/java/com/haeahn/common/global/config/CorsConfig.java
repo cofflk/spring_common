@@ -6,8 +6,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-
-
 @Configuration
 @RequiredArgsConstructor
 public class CorsConfig implements WebMvcConfigurer {
@@ -25,6 +23,14 @@ public class CorsConfig implements WebMvcConfigurer {
                 .allowedMethods(corsProperties.getAllowedMethods().toArray(new String[0]))
                 .allowedHeaders(corsProperties.getAllowedHeaders().toArray(new String[0]))
                 .allowCredentials(true) // 인증 정보 허용 여부
+                .maxAge(3600);
+
+        // graphiql 추가
+        registry.addMapping("/graphiql") // 명시적으로 추가
+                .allowedOriginPatterns("*")
+                .allowedMethods(corsProperties.getAllowedMethods().toArray(new String[0]))
+                .allowedHeaders(corsProperties.getAllowedHeaders().toArray(new String[0]))
+                .allowCredentials(true)
                 .maxAge(3600);
     }
 }

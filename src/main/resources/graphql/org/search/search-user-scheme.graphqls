@@ -1,0 +1,58 @@
+# ! : Not null
+extend type Query {
+    querySearchUser: [OrgSearchUser]
+    querySearchOrgUser(empNo: String!, keyword: String!, optType: String!, optPageSize: String, optPage: String): [OrgSearchOrgUser]
+}
+
+type OrgSearchUser implements User {
+    empNo: String
+    userId: String
+    userName: String
+    deptCode: String
+    deptName: String
+    companyCode: String
+    companyName: String
+    titleCode: String
+    titleName: String
+    dutyCode: String
+    dutyName: String
+    jobCode: String
+    jobName: String
+    email: String
+    extension: String
+    mobile: String
+}
+
+# type OrgSearchOrgUser implements User & Dept {
+type OrgSearchOrgUser implements User {
+    itemSort: String
+    itemType: String
+    itemCode: String
+    itemName: String
+# ===== User Start
+    empNo: String
+    userId: String
+    userName: String
+    deptCode: String
+    deptName: String
+    companyCode: String
+    companyName: String
+    titleCode: String
+    titleName: String
+    dutyCode: String
+    dutyName: String
+    jobCode: String
+    jobName: String
+    email: String
+    extension: String
+    mobile: String
+# ===== User End
+    deptSort: String
+    dutySort: String
+    jobSort: String
+    titleSort: String
+    userSort: String
+    hasO365: String
+    responsibility: String
+    location: String
+}

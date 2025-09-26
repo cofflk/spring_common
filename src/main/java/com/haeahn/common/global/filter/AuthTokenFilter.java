@@ -10,7 +10,6 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -86,18 +85,17 @@ public class AuthTokenFilter extends OncePerRequestFilter {
 
         } catch (Exception e) {
             log.error("[AuthTokenFilter] EXCEPTION, error:{}", e.getMessage());
-//            res.sendRedirect("/login");
+            res.sendRedirect(loginPage);
         }
 
-        String result = webClient.get()
-                .uri("/api/me")
-                .retrieve()
-                .bodyToMono(String.class)
-                .block(); // 동기 호출
-
-        System.out.println("API Response: " + result);
-
-        filterChain.doFilter(request, response);
+//        String result = webClient.get()
+//                .uri("/api/me")
+//                .retrieve()
+//                .bodyToMono(String.class)
+//                .block(); // 동기 호출
+//
+//        System.out.println("API Response: " + result);
+//        filterChain.doFilter(request, response);
 
     }
 

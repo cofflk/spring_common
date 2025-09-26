@@ -1,35 +1,32 @@
 extend type Query {
-#  erpHrCodes: [ErpHrCode!]!
-  erpHrCode(cdPrefix: String!, cdUpcode: String, cdCode: String, dsCode: String): ErpHrCode
 
-#  erpCommCodes: [ErpCommCode!]!
-  erpCommCode(cdSystem: String!, cdType: String!, cdCode: String, dsCode: String): ErpCommCode
+# CodeErpHr! : CodeErpHr 는 null 이 아님
+# [...]! : null 이 아닌 list 를 반환
+
+  queryCodeErpHr(cdPrefix: String!, cdUpcode: String, cdCode: String, dsCode: String): [CodeErpHr]
+  queryCodeErpComm(cdSystem: String!, cdType: String!, cdCode: String, dsCode: String): [CodeErpComm]
 }
 
-type ErpHrCode {
+# main.codeManager.payload.response.ResErpHrCode 와 일치
+type CodeErpHr {
   cdPrefix: String
   cdCode: String
   cdUpcode: String
   dsCode: String
-  amAllow: Float
-  amAllow2: Float
-  amAllow3: Float
+  amAllow: String
+  amAllow2: String
+  amAllow3: String
   rmBigo: String
-  ynDelete: String
-  ynSys: String
   snPrint: String
   dsEtc1: String
   dsEtc2: String
   dsEtc3: String
   dsEtc4: String
   dsEtc5: String
-  idInsert: String
-  dtInsert: String
-  idUpdate: String
-  dtUpdate: String
 }
 
-type ErpCommCode {
+# main.codeManager.payload.response.ResErpCommCode 와 일치
+type CodeErpComm {
   cdSystem: String
   cdType: String
   cdCode: String
@@ -41,7 +38,6 @@ type ErpCommCode {
   dsEtc4: String
   dsEtc5: String
   rmBigo: String
-  dsOrder: Int
-  ynUse: String
+  dsOrder: String
 }
 

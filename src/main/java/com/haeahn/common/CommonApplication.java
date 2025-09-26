@@ -3,18 +3,24 @@ package com.haeahn.common;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.graphql.GraphQlAutoConfiguration;
+import org.springframework.boot.autoconfigure.graphql.servlet.GraphQlWebMvcAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 //@EnableCaching
 @SpringBootApplication(exclude = {
 		DataSourceAutoConfiguration.class, // DB 연결(DataSource) 자동 구성 제외
 		DataSourceTransactionManagerAutoConfiguration.class, // JDBC 기반 트랜잭션 매니저 자동 구성을 제외.
 		HibernateJpaAutoConfiguration.class, // JPA(Hibernate) 관련 자동 구성을 제외
+//		GraphQlAutoConfiguration.class, // GraphQL 자동 구성 제외
+//		GraphQlWebMvcAutoConfiguration.class // GraphQL WebMvc 자동 구성 제외
 })
 @Slf4j
+//@EnableScheduling
 public class CommonApplication {
 	public static void main(String[] args) {
 //		SpringApplication.run(SvrWorkApplication.class, args);
