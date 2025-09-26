@@ -26,8 +26,6 @@ spring:
       cdn:
         enabled: false
 
-
-
 #  graphql:
 #    # GraphQL 자동 설정 비활성화 (커스텀 설정 사용)
 #    enabled: false
@@ -37,7 +35,6 @@ spring:
 #  endpoints:
 #    code: "/graphql/code"
 #    org: "/graphql/org"
-
 
 springdoc:
   swagger-ui:
@@ -50,6 +47,7 @@ springdoc:
 server:
   forward-headers-strategy: FRAMEWORK
 
+# 개별 서비스 인증 관리
 app:
   jwt:
     whitelistUrls:
