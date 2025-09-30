@@ -1,7 +1,12 @@
 # ! : Not null
 extend type Query {
     querySearchUser: [OrgSearchUser]
-    querySearchOrgUser(empNo: String!, keyword: String!, optType: String!, optPageSize: String, optPage: String): [OrgSearchOrgUser]
+    querySearchOrgUser(empNo: String!, keyword: String!, optType: String!, serviceName: String, optOrder: String, optPageSize: String, optPage: String, closeYn: String): OrgSearchUserResponse
+}
+
+type OrgSearchUserResponse {
+    bookmark: [OrgSearchOrgUser]
+    result: [OrgSearchOrgUser]
 }
 
 type OrgSearchUser implements User {
@@ -55,4 +60,5 @@ type OrgSearchOrgUser implements User {
     hasO365: String
     responsibility: String
     location: String
+    isBookmark: String
 }

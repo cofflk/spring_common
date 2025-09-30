@@ -1,4 +1,4 @@
-package com.haeahn.common.main.org.payload;
+package com.haeahn.common.main.org.payload.request;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,9 +8,14 @@ import lombok.Setter;
 public class ReqSearchOrgUser {
     private String empNo;
     private String keyword;
+    private String serviceName;
     private String optType;
     private String optPageSize; // items per page
     private String optPage;
+
+    public String getServiceName() {
+        return (serviceName == null || serviceName.trim().isBlank()) ? "ALL" : serviceName;
+    }
 
     public String getOptPageSize() {
         return (optPageSize == null || optPageSize.trim().isBlank()) ? "9999" : optPageSize;

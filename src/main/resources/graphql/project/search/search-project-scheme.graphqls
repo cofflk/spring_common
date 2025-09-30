@@ -1,0 +1,29 @@
+extend type Query {
+    querySearchProject(empNo: String!, keyword: String!, optType: String!, serviceName: String, optPageSize: String, optPage: String): ProjectSearchResponse
+}
+
+type ProjectSearchResponse {
+    bookmark: [ProjectSearchEntity]
+    result: [ProjectSearchEntity]
+}
+
+# project.payload.response.ResSearchProject
+type ProjectSearchEntity implements Project {
+    itemSort: String
+    itemType: String
+    itemCode: String
+    itemName: String
+# ===== Project Start
+    typeCode: String  # DEPT, PROJ
+    projSq: String
+    projCode: String
+    projName: String
+    deptCode: String
+    deptName: String
+# ===== Project End
+    orderTypeCode: String
+    startDate: String
+    endDate: String
+    orderName: String
+    isBookmark: String
+}

@@ -40,26 +40,74 @@ public class DatabaseService {
         }
         return ProcResultType.NONE;
     }
-    /*
-    e.g.
-    @SuppressWarnings("unchecked")
-    public List<Map<String, Object>> deleteToken(String refreshToken) {
-        try {
-            SqlParameterSource params = new MapSqlParameterSource()
-                    .addValue("REF_TOKEN", refreshToken);
-            Object result = dt.result("org", "USP_DEL_LOGIN_REFRESH_TOKEN", params);
 
-            if (dt.getResultType(result) == DatabaseService.ProcResultType.DATATABLE) {
-                return (List<Map<String, Object>>) result;
+    /**
+     * result-set-1 과 같은 이름을 별도 지정
+     * 배열 순서대로 설정
+     */
+    private Map<String, Object> resultWithNames(DataSource ds, String procName, SqlParameterSource params, List<String> resultNames) {
+        if (resultNames == null || resultNames.isEmpty()) return null; //result(ds, procName, params);
+
+        // LinkedHashMap을 사용하여 삽입 순서(즉, resultSetNames의 순서)를 보장합니다.
+        try {
+            Map<String, Object> result = proc.executeProcedure(ds, procName, params);
+            List<List<Map<String, Object>>> resultSets = new ArrayList<>();
+
+            for (Map.Entry<String, Object> entry : result.entrySet()) {
+                String key = entry.getKey();
+                if (key.startsWith("#result-set-")) {
+                    @SuppressWarnings("unchecked")
+                    List<Map<String, Object>> rs = (List<Map<String, Object>>) entry.getValue();
+                    resultSets.add(rs);
+                }
             }
-            return Collections.emptyList();
+
+            // 최종적으로 논리적 이름으로 매핑된 결과를 담을 맵
+            Map<String, Object> namedResults = new LinkedHashMap<>();
+            for (int i = 0; i < resultSets.size(); i++) {
+                String name = (i < resultNames.size())
+                        ? resultNames.get(i)  // 지정한 이름 사용
+                        : "#result-set-" + (i + 1); // 없으면 기본 이름
+                namedResults.put(name, resultSets.get(i));
+            }
+            return namedResults;
+
         } catch (Exception e) {
+//            e.printStackTrace();
             throw e;
         }
     }
+    /**
+     * 프로시저 호출
      */
+    public Map<String, Object> resultWithNames(String db, String procName, SqlParameterSource params, List<String> resultNames) {
+        try {
+            DataSource ds = conn.getDataSource("default", db);
+//        return proc.executeProcedure(ds, procName, params).get("#result-set-1");
 
-    public Object result(DataSource ds, String procName, SqlParameterSource params) {
+            return resultWithNames(ds, procName, params, resultNames);
+        } catch (Exception e) {
+//            e.printStackTrace();
+            throw e;
+        }
+    }
+    /**
+     * 프로시저 호출
+     */
+    public Map<String, Object> resultWithNames(String server, String db, String procName, SqlParameterSource params, List<String> resultNames) {
+        try {
+            DataSource ds = conn.getDataSource(server, db);
+//        return proc.executeProcedure(ds, procName, params).get("#result-set-1");
+
+            return resultWithNames(ds, procName, params, resultNames);
+        } catch (Exception e) {
+//            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    // return List
+    private Object result(DataSource ds, String procName, SqlParameterSource params) {
         try {
             Map<String, Object> result = proc.executeProcedure(ds, procName, params);
             List<List<Map<String, Object>>> resultSets = new ArrayList<>();
@@ -79,11 +127,14 @@ public class DatabaseService {
                 return resultSets;        // 여러 ResultSet이면 배열로 반환
             }
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
             throw e;
         }
     }
 
+    /**
+     * 프로시저 호출
+     */
     public Object result(String server, String db, String procName, SqlParameterSource params) {
         try {
             DataSource ds = conn.getDataSource(server, db);
@@ -91,7 +142,7 @@ public class DatabaseService {
 
             return result(ds, procName, params);
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
             throw e;
         }
     }
@@ -103,7 +154,7 @@ public class DatabaseService {
 
             return result(ds, procName, params);
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
             throw e;
         }
     }

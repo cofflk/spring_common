@@ -17,7 +17,7 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 @Slf4j
-public class CodeFinderResolver {
+public class SearchCodeResolver {
     private final CodeService codeService;
 
     @QueryMapping

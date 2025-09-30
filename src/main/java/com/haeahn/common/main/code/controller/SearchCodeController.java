@@ -23,7 +23,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/code")
-public class CodeFinderController {
+public class SearchCodeController {
     private final CodeService codeService;
     private final ApiResponseService apiResponseService;
 
@@ -35,7 +35,7 @@ public class CodeFinderController {
 
     @Operation(summary = "EKP_COMM..USP_GET_ERP_CODE_LIST", description = "ERP DAZT 코드 조회")
     @PostMapping("/erp/hr")
-    public <T> ResponseEntity<ApiResponseDto<List<ResErpHrCode>>> hrCodeFinder(@RequestBody ReqErpHrCode reqErpHrCode) {
+    public <T> ResponseEntity<ApiResponseDto<List<ResErpHrCode>>> searchCodeErpHe(@RequestBody ReqErpHrCode reqErpHrCode) {
         try {
             List<ResErpHrCode> result =  codeService.getErpHrCode(reqErpHrCode);
             return apiResponseService.success(result, "OK");
@@ -43,7 +43,7 @@ public class CodeFinderController {
             return apiResponseService.failure("FAIL", HttpStatus.NOT_FOUND);
         }
     }
-//    public ResponseEntity<List<ResErpHrCode>> hrCodeFinder(@RequestBody ReqErpHrCode reqErpHrCode) {
+//    public ResponseEntity<List<ResErpHrCode>> searchCodeErpHe(@RequestBody ReqErpHrCode reqErpHrCode) {
 //        try {
 //            List<ResErpHrCode> result =  codeService.getErpHrCode(reqErpHrCode);
 //            return ResponseEntity.ok()
@@ -56,7 +56,7 @@ public class CodeFinderController {
 
     @Operation(summary = "EKP_COMM..USP_GET_ERP_CODE_LIST", description = "ERP DZZT 코드 조회")
     @PostMapping("/erp/common")
-    public <T> ResponseEntity<ApiResponseDto<List<ResErpCommCode>>> commCodeFinder(@RequestBody ReqErpCommCode reqErpCommCode) {
+    public <T> ResponseEntity<ApiResponseDto<List<ResErpCommCode>>> searchCodeErpComm(@RequestBody ReqErpCommCode reqErpCommCode) {
         try {
             List<ResErpCommCode> result =  codeService.getErpCommonCode(reqErpCommCode);
             return apiResponseService.success(result, "OK");

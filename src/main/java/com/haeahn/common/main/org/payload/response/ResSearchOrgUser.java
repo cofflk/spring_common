@@ -1,4 +1,4 @@
-package com.haeahn.common.main.org.payload;
+package com.haeahn.common.main.org.payload.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -38,4 +38,5 @@ public class ResSearchOrgUser {
     private String hasO365;
     private String responsibility;
     private String location;
+    private String isBookmark;
 }

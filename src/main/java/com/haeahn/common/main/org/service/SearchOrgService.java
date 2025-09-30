@@ -1,22 +1,23 @@
 package com.haeahn.common.main.org.service;
 
-import com.haeahn.common.main.code.payload.response.ResErpHrCode;
 import com.haeahn.common.main.org.dto.SearchOrgUserDto;
-import com.haeahn.common.main.org.payload.ReqSearchOrgUser;
-import com.haeahn.common.main.org.payload.ResSearchOrgUser;
+import com.haeahn.common.main.org.payload.request.ReqSearchOrgUser;
+import com.haeahn.common.main.org.payload.response.ResSearchOrgUser;
 import com.haeahn.common.main.org.repository.SearchOrgRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class SearchOrgService {
     private final SearchOrgRepository searchOrgRepository;
 
-    public List<ResSearchOrgUser> getSearchOrgUser(ReqSearchOrgUser reqSearchOrgUser) {
-        List<SearchOrgUserDto> result = searchOrgRepository.searchOrgUser(reqSearchOrgUser);
+    private List<ResSearchOrgUser> getPayload(List<SearchOrgUserDto> result) {
         return result.stream()
                 .map(item -> ResSearchOrgUser.builder()
                         .itemSort(item.getItemSort())
@@ -50,5 +51,18 @@ public class SearchOrgService {
                         .build()
                 )
                 .toList();
+    }
+
+    public Map<String, List<ResSearchOrgUser>> getSearchOrgUser(ReqSearchOrgUser reqSearchOrgUser) {
+//        List<SearchOrgUserDto> result = searchOrgRepository.searchOrgUser(reqSearchOrgUser);
+        List<String> resultNames = Arrays.asList("BOOK", "RESULT");
+        Map<String, List<SearchOrgUserDto>> result = searchOrgRepository.searchOrgUser(reqSearchOrgUser, resultNames);
+
+        return result.entrySet()
+                .stream()
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        entry -> getPayload(entry.getValue()) // SearchOrgUserDto → ResSearchOrgUser 변환
+                ));
     }
 }

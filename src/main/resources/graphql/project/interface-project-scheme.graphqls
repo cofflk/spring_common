@@ -1,0 +1,8 @@
+interface Project {
+    typeCode: String  # DEPT, PROJ
+    projSq: String
+    projCode: String
+    projName: String
+    deptCode: String
+    deptName: String
+}

@@ -1,11 +1,10 @@
-package com.haeahn.common.main.fileManager.controller;
+package com.haeahn.common.main.attachment.controller;
 
 import com.haeahn.common.global.config.properties.PropertiesReader;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,11 +18,11 @@ import java.util.Map;
 @RestController
 //@RequiredArgsConstructor
 @RequestMapping("/file")
-public class FileManagerController {
+public class UploadController {
     private final PropertiesReader propertiesReader;
     private final String uploadDir;
 
-    public FileManagerController(PropertiesReader propertiesReader) {
+    public UploadController(PropertiesReader propertiesReader) {
         this.propertiesReader = propertiesReader;
         this.uploadDir = propertiesReader.getProperty("app.storage.path");
     }

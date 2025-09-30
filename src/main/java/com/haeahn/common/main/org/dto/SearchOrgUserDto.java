@@ -67,4 +67,6 @@ public class SearchOrgUserDto {
     private String responsibility;
     @JsonProperty("SEAT_TXT")
     private String location;
+    @JsonProperty("BOOKMARK_YN")
+    private String isBookmark;
 }
