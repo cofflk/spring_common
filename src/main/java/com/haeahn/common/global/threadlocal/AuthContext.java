@@ -1,6 +1,6 @@
-package com.haeahn.common.global.interceptor.context;
+package com.haeahn.common.global.threadlocal;
 
-import com.haeahn.common.global.interceptor.dto.AuthUserDto;
+import com.haeahn.common.global.dto.AuthUserDto;
 
 public class AuthContext {
     private static final ThreadLocal<AuthUserDto> AUTH_USER = new ThreadLocal<>();

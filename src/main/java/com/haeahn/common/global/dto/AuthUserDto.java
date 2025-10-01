@@ -1,4 +1,4 @@
-package com.haeahn.common.global.interceptor.dto;
+package com.haeahn.common.global.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

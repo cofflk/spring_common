@@ -1,9 +1,8 @@
-package com.haeahn.common.global.interceptor.service;
+package com.haeahn.common.global.threadlocal;
 
-import com.haeahn.common.global.interceptor.dto.CustomHeaderDto;
+import com.haeahn.common.global.dto.CustomHeaderDto;
 import com.haeahn.common.global.utils.common.CookieUtils;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;

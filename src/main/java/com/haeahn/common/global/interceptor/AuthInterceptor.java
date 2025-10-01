@@ -1,9 +1,10 @@
-package com.haeahn.common.global.interceptor.service;
+package com.haeahn.common.global.interceptor;
 
 import com.haeahn.common.global.annotation.LogAccess;
-import com.haeahn.common.global.interceptor.context.AuthContext;
-import com.haeahn.common.global.interceptor.dto.CustomHeaderDto;
-import com.haeahn.common.global.interceptor.context.CustomHeaderContext;
+import com.haeahn.common.global.threadlocal.AuthContext;
+import com.haeahn.common.global.dto.CustomHeaderDto;
+import com.haeahn.common.global.threadlocal.CustomHeaderContext;
+import com.haeahn.common.global.threadlocal.CustomHeaderService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;

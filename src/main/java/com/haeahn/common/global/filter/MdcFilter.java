@@ -1,7 +1,7 @@
 package com.haeahn.common.global.filter;
 
-import com.haeahn.common.global.interceptor.context.CustomHeaderContext;
-import com.haeahn.common.global.interceptor.dto.CustomHeaderDto;
+import com.haeahn.common.global.threadlocal.CustomHeaderContext;
+import com.haeahn.common.global.dto.CustomHeaderDto;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

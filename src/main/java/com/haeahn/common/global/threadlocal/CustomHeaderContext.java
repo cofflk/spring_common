@@ -1,6 +1,6 @@
-package com.haeahn.common.global.interceptor.context;
+package com.haeahn.common.global.threadlocal;
 
-import com.haeahn.common.global.interceptor.dto.CustomHeaderDto;
+import com.haeahn.common.global.dto.CustomHeaderDto;
 
 public class CustomHeaderContext {
     private static final ThreadLocal<CustomHeaderDto> CLIENT_INFO_THREAD_LOCAL = new ThreadLocal<>();
